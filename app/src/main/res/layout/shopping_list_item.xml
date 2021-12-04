@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    android:backgroundTint="@color/blue_shade_2"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:id="@+id/idLL1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="5">
+
+            <TextView
+                android:id="@+id/idTvItemName"
+                android:layout_width="8dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="2"
+                android:padding="4dp"
+                android:text="Item Name"
+                android:textColor="@color/white"></TextView>
+
+            <TextView
+                android:id="@+id/idTvQuantity"
+                android:layout_width="8dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:text="Quantity"
+                android:textColor="@color/white">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/idTvRate"
+                android:layout_width="8dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="0.5"
+                android:padding="4dp"
+                android:text="Rate"
+                android:textColor="@color/white"></TextView>
+
+            <ImageView
+                android:id="@+id/idIvDelete"
+                android:layout_width="8dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="2.5"
+                android:padding="4dp"
+                android:src="@drawable/ic_delete"
+                app:tint="@color/white">
+
+            </ImageView>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/idTvTotalCost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/idLL1"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginBottom="3dp"
+            android:padding="4dp"
+            android:text="Total Cost"
+            android:textColor="@color/white"></TextView>
+
+        <TextView
+            android:id="@+id/idTvAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/idLL1"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:padding="4dp"
+            android:text="Amount"
+            android:textColor="@color/white">
+
+        </TextView>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+
