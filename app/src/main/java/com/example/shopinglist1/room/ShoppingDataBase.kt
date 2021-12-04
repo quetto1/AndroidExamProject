@@ -4,9 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import java.security.AccessControlContext
+import com.example.shopinglist1.room.ShoppingDao
+import com.example.shopinglist1.room.ShoppingItemsMain
 
-@Database(entities = [ShoppingItems::class], version = 1)
+@Database(entities = [ShoppingItems::class, ShoppingItemsMain::class], version = 1)
 abstract class ShoppingDataBase : RoomDatabase() {
     abstract fun getShoppingDao(): ShoppingDao
 

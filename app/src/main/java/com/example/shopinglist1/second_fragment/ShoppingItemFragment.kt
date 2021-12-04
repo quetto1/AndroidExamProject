@@ -2,6 +2,7 @@ package com.example.shopinglist1
 
 import android.graphics.LinearGradient
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shopinglist1.databinding.ActivityMainBinding
 import com.example.shopinglist1.databinding.FragmentShoppingItemBinding
 import org.pondar.dialogfragmentdemokotlinnew.AddRangeDialog
+import kotlin.math.log
 
 class ShoppingItemFragment : Fragment(), ShoppingAdapter.ShopppingItemClickInterface {
     var list: List<ShoppingItems> = emptyList()
@@ -32,7 +34,15 @@ class ShoppingItemFragment : Fragment(), ShoppingAdapter.ShopppingItemClickInter
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+
         super.onViewCreated(view, savedInstanceState)
+
+        val position = arguments?.getString("position")
+        val name = arguments?.getString("name")
+
+        Log.d("id", "$position,$name")
+
         shoppingAdapter =  ShoppingAdapter(list, this)
         binding.IdRvItem.layoutManager = LinearLayoutManager(context)
         binding.IdRvItem.adapter = shoppingAdapter
@@ -52,6 +62,7 @@ class ShoppingItemFragment : Fragment(), ShoppingAdapter.ShopppingItemClickInter
                 }
             }).show()
         }
+
 
     }
 
