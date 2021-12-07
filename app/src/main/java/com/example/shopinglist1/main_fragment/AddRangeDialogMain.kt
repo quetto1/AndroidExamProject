@@ -25,10 +25,8 @@ class AddRangeDialogMain(
         val itemNameText = findViewById<EditText>(R.id.textView)
 
 
-
         addButton?.setOnClickListener {
             val itemNameMain = itemNameText?.text.toString()
-
 
             val item = ShoppingItemsMain(itemNameMain)
             shoppingItemClickInterface.onItemClick(item)

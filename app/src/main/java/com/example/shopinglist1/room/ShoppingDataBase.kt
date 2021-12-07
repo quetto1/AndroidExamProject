@@ -7,6 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.shopinglist1.room.ShoppingDao
 import com.example.shopinglist1.room.ShoppingItemsMain
 
+//Here we are invoking the database where we attaching 2 tables  shoppingItems and shopping_items_main
 @Database(entities = [ShoppingItems::class, ShoppingItemsMain::class], version = 1)
 abstract class ShoppingDataBase : RoomDatabase() {
     abstract fun getShoppingDao(): ShoppingDao

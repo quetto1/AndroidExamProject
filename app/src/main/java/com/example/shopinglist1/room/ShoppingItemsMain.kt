@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-// Initiating variables in table from Room Database
+// Initiating variables in table using Room Database
 @Entity(tableName = "shopping_items_main")
 data class ShoppingItemsMain (
     //Column with  Item Name

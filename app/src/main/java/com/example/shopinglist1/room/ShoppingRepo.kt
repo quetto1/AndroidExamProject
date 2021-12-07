@@ -3,6 +3,7 @@ package com.example.shopinglist1
 import com.example.shopinglist1.room.ShoppingItemsMain
 
 
+//Shopping repo is responsible for initiating functions responsible for pushing,deleting and geting the records from the database
 class ShoppingRepo(private val db:ShoppingDataBase) {
 
     suspend fun insert(items: ShoppingItems) = db.getShoppingDao().insert(items)
