@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ShoppingAdapter(var list:  List<ShoppingItems>, val shopppingItemClickInterface: ShopppingItemClickInterface): RecyclerView.Adapter<ShoppingAdapter.ShoppingViewHolder>()
+class ShoppingAdapter(var list:  List<ShoppingItems>, val shopppingItemClickInterface: ShopppingItemClickInterface, private val vm:ShoppingViewModel): RecyclerView.Adapter<ShoppingAdapter.ShoppingViewHolder>()
  {
 
 
@@ -42,7 +42,8 @@ class ShoppingAdapter(var list:  List<ShoppingItems>, val shopppingItemClickInte
          holder.amountTv.text = "$ " + itemTotal.toString()
          holder.deleteTv.setOnClickListener {
              // get(position) jest pobraniem pozycji danego elementu
-             shopppingItemClickInterface.onItemClick(list.get(position))
+//             shopppingItemClickInterface.onItemClick(list.get(position))?
+             vm.delete(list.get(position))
          }
 
      }

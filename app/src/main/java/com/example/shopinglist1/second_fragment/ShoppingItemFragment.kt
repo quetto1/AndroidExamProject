@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -35,7 +37,6 @@ class ShoppingItemFragment : Fragment(), ShoppingAdapter.ShopppingItemClickInter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-
         super.onViewCreated(view, savedInstanceState)
 
         val position = arguments?.getString("position")
@@ -43,13 +44,13 @@ class ShoppingItemFragment : Fragment(), ShoppingAdapter.ShopppingItemClickInter
 
         Log.d("id", "$position,$name")
 
-        shoppingAdapter =  ShoppingAdapter(list, this)
-        binding.IdRvItem.layoutManager = LinearLayoutManager(context)
-        binding.IdRvItem.adapter = shoppingAdapter
-
         val shoppingRepo = ShoppingRepo(ShoppingDataBase(requireContext()))
         val factory = ShoppingViewModelFactory(shoppingRepo)
-        val shoppingViewModel = ViewModelProvider(this, factory).get(ShoppingViewModel::class.java)
+        shoppingViewModel = ViewModelProvider(this, factory).get(ShoppingViewModel::class.java)
+
+        shoppingAdapter =  ShoppingAdapter(list, this, shoppingViewModel)
+        binding.IdRvItem.layoutManager = LinearLayoutManager(context)
+        binding.IdRvItem.adapter = shoppingAdapter
 
         shoppingViewModel.getAllShoppingItems().observe(viewLifecycleOwner, Observer {
             shoppingAdapter.list = it
@@ -62,7 +63,6 @@ class ShoppingItemFragment : Fragment(), ShoppingAdapter.ShopppingItemClickInter
                 }
             }).show()
         }
-
 
     }
 

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.shopinglist1.R
 import com.example.shopinglist1.ShoppingAdapter
 import com.example.shopinglist1.ShoppingItems
+import com.example.shopinglist1.ShoppingViewModel
 import com.example.shopinglist1.room.ShoppingItemsMain
 
 class ShoppingAdapterMain(var list:  List<ShoppingItemsMain>, val shopppingItemClickInterface: ShopppingItemClickInterface): RecyclerView.Adapter<ShoppingAdapterMain.ShoppingViewHolderMain>()
@@ -19,7 +20,7 @@ class ShoppingAdapterMain(var list:  List<ShoppingItemsMain>, val shopppingItemC
 
     inner class ShoppingViewHolderMain(itemView: View): RecyclerView.ViewHolder(itemView){
         val nameTv = itemView.findViewById<TextView>(R.id.idTvItemName)
-        val deleteTv = itemView.findViewById<ImageView>(R.id.idIvDelete)
+        val deleteTv = itemView.findViewById<ImageView>(R.id.idIvDeleteMain)
         val rootView = itemView.rootView
     }
 
