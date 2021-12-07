@@ -1,11 +1,11 @@
 package com.example.shopinglist1
 
+//Room imported functionalities
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-//Stworzenie zmiennych w tabeli wykorzystując Rooma (Entities)
-
+//Initiating variables in table using  Room (Entities)
 @Entity(tableName = "shopping_items")
 data class ShoppingItems (
     @ColumnInfo(name = "itemName")

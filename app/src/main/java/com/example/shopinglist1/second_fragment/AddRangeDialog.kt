@@ -4,18 +4,13 @@ package org.pondar.dialogfragmentdemokotlinnew
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDialog
-import androidx.fragment.app.DialogFragment
 import com.example.shopinglist1.R
 import com.example.shopinglist1.ShoppingAdapter
 import com.example.shopinglist1.ShoppingItems
-import com.example.shopinglist1.databinding.FragmentAddRangeDialogBinding
 
 class AddRangeDialog(
     context: Context,
@@ -24,7 +19,7 @@ class AddRangeDialog(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_add_range_dialog)
+        setContentView(R.layout.add_range_dialog)
 //        binding = AddRangeDialogBinding.inflate(layoutInflater)
         val addButton = findViewById<Button>(R.id.addButton)
         val cancelButton = findViewById<Button>(R.id.cancelButton)
