@@ -15,4 +15,9 @@ class ShoppingViewModel(private val repo: ShoppingRepo): ViewModel() {
     }
 
     fun getAllShoppingItems() = repo.getAllItems()
+
+    fun getAllPickedShoppingItems(id:Int) = repo.getAllItemsFromPickedList(id)
+
+    fun deleteByIdShoppingWithProducts(id: List<Int>) = repo.deleteByIdShoppingWithProducts(id)
+
 }

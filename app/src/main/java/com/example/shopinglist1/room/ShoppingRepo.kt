@@ -17,6 +17,8 @@ class ShoppingRepo(private val db:ShoppingDataBase) {
 
     fun getAllItemsMain()= db.getShoppingDao().getAllShoppingItemsMain()
 
-    fun getAllItemsFromPickedList()= db.getShoppingDao().getAllPickedShoppingItems()
+    fun getAllItemsFromPickedList(id:Int)= db.getShoppingDao().getAllPickedShoppingItems(id)
+
+    fun deleteByIdShoppingWithProducts(id: List<Int>) = db.getShoppingDao().deleteByIdShoppingWithProducts(id)
 
 }

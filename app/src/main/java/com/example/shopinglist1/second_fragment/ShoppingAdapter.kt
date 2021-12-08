@@ -7,9 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ShoppingAdapter(var list:  List<ShoppingItems>, val shopppingItemClickInterface: ShopppingItemClickInterface, private val vm:ShoppingViewModel): RecyclerView.Adapter<ShoppingAdapter.ShoppingViewHolder>()
+class ShoppingAdapter(var list:  List<ShoppingItems>, val shoppingItemClickInterface: ShopppingItemClickInterface, private val vm:ShoppingViewModel): RecyclerView.Adapter<ShoppingAdapter.ShoppingViewHolder>()
  {
-
 
     inner class ShoppingViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val nameTv = itemView.findViewById<TextView>(R.id.idTvItemName)
@@ -19,11 +18,9 @@ class ShoppingAdapter(var list:  List<ShoppingItems>, val shopppingItemClickInte
         val deleteTv = itemView.findViewById<ImageView>(R.id.idIvDelete)
     }
 
-
     interface ShopppingItemClickInterface{
         fun onItemClick(shoppingItems: ShoppingItems)
     }
-
 
      override fun onCreateViewHolder(
          parent: ViewGroup,
@@ -32,6 +29,12 @@ class ShoppingAdapter(var list:  List<ShoppingItems>, val shopppingItemClickInte
          val view = LayoutInflater.from(parent.context).inflate(R.layout.shopping_list_item, parent, false)
          return ShoppingViewHolder(view)
      }
+
+     //Take entire list and assigns it to Shopping Fragment
+     fun getProducts() : List<ShoppingItems> {
+         return list
+     }
+
 
      //  Funkcja przypisuje do adaptera wartości które znajdują się na liście
      override fun onBindViewHolder(holder: ShoppingAdapter.ShoppingViewHolder, position: Int) {
@@ -45,7 +48,6 @@ class ShoppingAdapter(var list:  List<ShoppingItems>, val shopppingItemClickInte
 //             shopppingItemClickInterface.onItemClick(list.get(position))?
              vm.delete(list.get(position))
          }
-
      }
 
      //funck

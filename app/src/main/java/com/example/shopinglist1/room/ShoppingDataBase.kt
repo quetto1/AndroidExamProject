@@ -31,7 +31,8 @@ abstract class ShoppingDataBase : RoomDatabase() {
                 context.applicationContext,
                 ShoppingDataBase::class.java,
                 "Shopping.DB"
-            ).build()
+            ).allowMainThreadQueries().build()
+
 
     }
 

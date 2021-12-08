@@ -40,8 +40,6 @@ class MainFragment : Fragment(), ShoppingAdapterMain.ShopppingItemClickInterface
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         val shoppingRepo = ShoppingRepo(ShoppingDataBase(requireContext()))
         val factory = ShoppingViewModelFactoryMain(shoppingRepo)
         shoppingViewModelMain = ViewModelProvider(this, factory).get(ShoppingViewModelMain::class.java)

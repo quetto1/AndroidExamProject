@@ -32,6 +32,11 @@ interface ShoppingDao {
     fun getAllShoppingItemsMain():LiveData<List<ShoppingItemsMain>>
 
     @Transaction
-    @Query("Select * FROM shopping_items_main")
-    fun getAllPickedShoppingItems():LiveData<List<ShoppingItemsMain>>
+    @Query("Select * FROM shopping_items_main WHERE id = :id")
+    fun getAllPickedShoppingItems(id:Int):LiveData<ShoppingItemsConnection>
+
+    @Transaction
+    @Query("DELETE FROM shopping_items WHERE id in (:idList)")
+    fun deleteByIdShoppingWithProducts(idList: List<Int>)
+
 }

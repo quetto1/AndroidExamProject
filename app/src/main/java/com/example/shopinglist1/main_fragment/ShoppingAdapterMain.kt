@@ -17,13 +17,11 @@ import com.example.shopinglist1.room.ShoppingItemsMain
 class ShoppingAdapterMain(var list:  List<ShoppingItemsMain>, val shopppingItemClickInterface: ShopppingItemClickInterface): RecyclerView.Adapter<ShoppingAdapterMain.ShoppingViewHolderMain>()
 {
 
-
     inner class ShoppingViewHolderMain(itemView: View): RecyclerView.ViewHolder(itemView){
         val nameTv = itemView.findViewById<TextView>(R.id.idTvItemName)
         val deleteTv = itemView.findViewById<ImageView>(R.id.idIvDeleteMain)
         val rootView = itemView.rootView
     }
-
 
     interface ShopppingItemClickInterface{
         fun onItemClick(shoppingItemsMain: ShoppingItemsMain)
@@ -48,7 +46,7 @@ class ShoppingAdapterMain(var list:  List<ShoppingItemsMain>, val shopppingItemC
 
         holder.rootView.setOnClickListener {
 
-            val bundle = bundleOf("position" to position.toString(), "name" to list.get(position).itemNameMain)
+            val bundle = bundleOf("position" to list.get(position).id.toString(), "name" to list.get(position).itemNameMain)
             holder.rootView.findNavController().navigate(R.id.action_mainFragment_to_shoppingItemFragment, bundle)
         }
 

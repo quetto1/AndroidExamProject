@@ -14,5 +14,5 @@ data class ShoppingItemsMain (
 ) {
     // Creates a column with unique id
     @PrimaryKey(autoGenerate = true)
-    var id: Int? = null
+    var id: Int = 0
 }

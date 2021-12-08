@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatDialog
 import com.example.shopinglist1.R
 import com.example.shopinglist1.ShoppingAdapter
+import com.example.shopinglist1.ShoppingItemFragment
 import com.example.shopinglist1.ShoppingItems
 
 class AddRangeDialog(
@@ -27,6 +28,10 @@ class AddRangeDialog(
         val itemQuantityText = findViewById<EditText>(R.id.editTextStart)
         val itemPriceText = findViewById<EditText>(R.id.textView2)
 
+
+        val position = ShoppingItemFragment.positionValue
+        val name = ShoppingItemFragment.nameValue
+
         // Tu zrobimy put bazy danych obiekt shooping Items i przekazemy do niego id Listy
         // Otwarta lista wcześniejsza jako id sklepu
         // Chcemy miec przekazaną pozycje (id, nazwę) i wyświetlić
@@ -43,7 +48,7 @@ class AddRangeDialog(
                 return@setOnClickListener
             }
 
-            val item = ShoppingItems(itemName, itemQuantity.toInt(), itemPrice.toInt(), 2 )
+            val item = ShoppingItems(itemName, itemQuantity.toInt(), itemPrice.toInt(), position.toInt())
             shoppingItemClickInterface.onItemClick(item)
             dismiss()
             Log.d("dialog", "Add Dialog")
