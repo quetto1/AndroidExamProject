@@ -52,6 +52,7 @@ class ShoppingItemFragment : Fragment(), ShoppingAdapter.ShopppingItemClickInter
         binding.IdRvItem.layoutManager = LinearLayoutManager(context)
         binding.IdRvItem.adapter = shoppingAdapter
 
+        // Tutaj pobierzmy z rooma baze danych z gotową relacją
         shoppingViewModel.getAllShoppingItems().observe(viewLifecycleOwner, Observer {
             shoppingAdapter.list = it
             shoppingAdapter.notifyDataSetChanged()

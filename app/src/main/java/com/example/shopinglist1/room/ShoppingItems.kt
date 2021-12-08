@@ -17,7 +17,8 @@ data class ShoppingItems (
     @ColumnInfo(name = "itemPrice")
     var itemPrice: Int,
 
-//    val shopOwnerId : Int
+
+    val shopOwnerId : Int
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null

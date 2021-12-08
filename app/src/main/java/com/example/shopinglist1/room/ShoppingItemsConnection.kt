@@ -5,8 +5,8 @@ import androidx.room.Relation
 import com.example.shopinglist1.ShoppingItems
 import com.example.shopinglist1.room.ShoppingItemsMain
 
-class ShoppingItemsConnection (
 
+data class ShoppingItemsConnection (
     @Embedded
     val shoppingItemsMain: ShoppingItemsMain,
     @Relation(

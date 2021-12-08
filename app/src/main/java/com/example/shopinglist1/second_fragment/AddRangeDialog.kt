@@ -27,11 +27,15 @@ class AddRangeDialog(
         val itemQuantityText = findViewById<EditText>(R.id.editTextStart)
         val itemPriceText = findViewById<EditText>(R.id.textView2)
 
+        // Tu zrobimy put bazy danych obiekt shooping Items i przekazemy do niego id Listy
+        // Otwarta lista wcześniejsza jako id sklepu
+        // Chcemy miec przekazaną pozycje (id, nazwę) i wyświetlić
 
         addButton?.setOnClickListener {
             val itemName = itemNameText?.text.toString()
             val itemQuantity = itemQuantityText?.text.toString()
             val itemPrice = itemPriceText?.text.toString()
+
 
             if (itemName.isEmpty() || itemQuantity.isEmpty() || itemPrice.isEmpty()) {
                 Toast.makeText(context, "Please enter all the information", Toast.LENGTH_SHORT)
@@ -39,7 +43,7 @@ class AddRangeDialog(
                 return@setOnClickListener
             }
 
-            val item = ShoppingItems(itemName, itemQuantity.toInt(), itemPrice.toInt())
+            val item = ShoppingItems(itemName, itemQuantity.toInt(), itemPrice.toInt(), 2 )
             shoppingItemClickInterface.onItemClick(item)
             dismiss()
             Log.d("dialog", "Add Dialog")

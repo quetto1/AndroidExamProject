@@ -16,4 +16,7 @@ class ShoppingRepo(private val db:ShoppingDataBase) {
     suspend fun deleteMain(items: ShoppingItemsMain) = db.getShoppingDao().deleteMain(items)
 
     fun getAllItemsMain()= db.getShoppingDao().getAllShoppingItemsMain()
+
+    fun getAllItemsFromPickedList()= db.getShoppingDao().getAllPickedShoppingItems()
+
 }
