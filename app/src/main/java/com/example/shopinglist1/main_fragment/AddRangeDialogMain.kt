@@ -27,7 +27,6 @@ class AddRangeDialogMain(
 
         addButton?.setOnClickListener {
             val itemNameMain = itemNameText?.text.toString()
-
             val item = ShoppingItemsMain(itemNameMain)
             shoppingItemClickInterface.onItemClick(item)
             dismiss()

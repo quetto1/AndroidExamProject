@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
 
+//Responisble for init viewModel
 class ShoppingViewModelFactory(private val repository: ShoppingRepo) :
     ViewModelProvider.NewInstanceFactory() {
 
