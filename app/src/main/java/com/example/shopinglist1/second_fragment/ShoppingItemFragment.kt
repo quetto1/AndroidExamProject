@@ -50,9 +50,6 @@ class ShoppingItemFragment : Fragment(), ShoppingAdapter.ShopppingItemClickInter
 
         binding.toolbar.TvListName.text = nameValue
 
-
-        Log.d("id", "$position,$name")
-
         val shoppingRepo = ShoppingRepo(ShoppingDataBase(requireContext()))
         val factory = ShoppingViewModelFactory(shoppingRepo)
         shoppingViewModel = ViewModelProvider(this, factory).get(ShoppingViewModel::class.java)
@@ -61,14 +58,8 @@ class ShoppingItemFragment : Fragment(), ShoppingAdapter.ShopppingItemClickInter
         binding.IdRvItem.layoutManager = LinearLayoutManager(context)
         binding.IdRvItem.adapter = shoppingAdapter
 
-        // Tutaj pobierzmy z rooma baze danych z gotową relacją
-//        if(positionValue.toInt() == 0){
-//            positionValue = "1"
-//        }
-
+        // This is responsible for getting all the items and observing the status of the second recycle view if anything changes
         shoppingViewModel.getAllPickedShoppingItems(position!!.toInt()).observe(viewLifecycleOwner, Observer {
-//            shoppingAdapter.list = it.shoppingList
-//            shoppingAdapter.notifyDataSetChanged()
             if(it == null || it.shoppingList.isEmpty()) {
                 it?.shoppingList = emptyList()
                 shoppingAdapter.list = emptyList()
@@ -85,23 +76,24 @@ class ShoppingItemFragment : Fragment(), ShoppingAdapter.ShopppingItemClickInter
                 }
             }).show()
         }
-        // this biding is responsible for taking all items from a certain list and deletes all of the records
-        // It deletes the records by id
+
         binding.toolbar.deleteAll.setOnClickListener {
             shoppingViewModel.deleteByIdShoppingWithProducts(shoppingAdapter.getProducts().map { it.id })
         }
+        //binding responsible for going back to the main view
         binding.toolbar.idIvHome.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_shoppingItemFragment_to_mainFragment)
         }
     }
 
+    // Function responsible for delting the
     override fun onItemClick(shoppingItems: ShoppingItems) {
         shoppingViewModel.delete(shoppingItems)
         shoppingAdapter.notifyDataSetChanged()
         Toast.makeText(context, "Item deleted...", Toast.LENGTH_SHORT)
     }
 
-
+    // Declaring empty string variables for matching the records for both tables
     companion object {
         var positionValue = ""
         var nameValue = ""

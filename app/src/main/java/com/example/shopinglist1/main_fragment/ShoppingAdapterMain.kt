@@ -14,7 +14,9 @@ import com.example.shopinglist1.ShoppingItems
 import com.example.shopinglist1.ShoppingViewModel
 import com.example.shopinglist1.room.ShoppingItemsMain
 
-class ShoppingAdapterMain(var list:  List<ShoppingItemsMain>, val shopppingItemClickInterface: ShopppingItemClickInterface): RecyclerView.Adapter<ShoppingAdapterMain.ShoppingViewHolderMain>()
+
+class ShoppingAdapterMain(var list:  List<ShoppingItemsMain>, val shopppingItemClickInterface: ShopppingItemClickInterface):
+    RecyclerView.Adapter<ShoppingAdapterMain.ShoppingViewHolderMain>()
 {
 
     inner class ShoppingViewHolderMain(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -36,11 +38,11 @@ class ShoppingAdapterMain(var list:  List<ShoppingItemsMain>, val shopppingItemC
         return ShoppingViewHolderMain(view)
     }
 
-    //  Funkcja przypisuje do adaptera wartości które znajdują się na liście
+    // funtion responsible for
     override fun onBindViewHolder(holder: ShoppingAdapterMain.ShoppingViewHolderMain, position: Int) {
         holder.nameTv.text = list.get(position).itemNameMain
         holder.deleteTv.setOnClickListener {
-            // get(position) jest pobraniem pozycji danego elementu
+            // function responsible for deleting an entire shopping list
             shopppingItemClickInterface.onItemClick(list.get(position))
         }
 

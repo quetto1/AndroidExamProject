@@ -5,7 +5,7 @@ import androidx.room.Relation
 import com.example.shopinglist1.ShoppingItems
 import com.example.shopinglist1.room.ShoppingItemsMain
 
-// File Responible for ....
+// Responsible for Initializing a relation between 2 tables
 data class ShoppingItemsConnection (
     @Embedded
     val shoppingItemsMain: ShoppingItemsMain,

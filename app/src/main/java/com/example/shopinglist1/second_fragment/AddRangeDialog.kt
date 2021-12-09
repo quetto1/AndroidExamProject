@@ -13,6 +13,7 @@ import com.example.shopinglist1.ShoppingAdapter
 import com.example.shopinglist1.ShoppingItemFragment
 import com.example.shopinglist1.ShoppingItems
 
+// Class Responsible for creating a dialog for adding items to the main fragment (main recycle view)
 class AddRangeDialog(
     context: Context,
     var shoppingItemClickInterface: ShoppingAdapter.ShopppingItemClickInterface
@@ -21,20 +22,16 @@ class AddRangeDialog(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_range_dialog)
-//        binding = AddRangeDialogBinding.inflate(layoutInflater)
         val addButton = findViewById<Button>(R.id.addButton)
         val cancelButton = findViewById<Button>(R.id.cancelButton)
         val itemNameText = findViewById<EditText>(R.id.textView)
         val itemQuantityText = findViewById<EditText>(R.id.editTextStart)
         val itemPriceText = findViewById<EditText>(R.id.textView2)
 
-
+        // Variables for reading up the position of certain table record
         val position = ShoppingItemFragment.positionValue
         val name = ShoppingItemFragment.nameValue
 
-        // Tu zrobimy put bazy danych obiekt shooping Items i przekazemy do niego id Listy
-        // Otwarta lista wcześniejsza jako id sklepu
-        // Chcemy miec przekazaną pozycje (id, nazwę) i wyświetlić
 
         addButton?.setOnClickListener {
             val itemName = itemNameText?.text.toString()
@@ -42,6 +39,8 @@ class AddRangeDialog(
             val itemPrice = itemPriceText?.text.toString()
 
 
+            // If statement responsible  for filling data in every input
+            //Note without it user can create an item without any given info
             if (itemName.isEmpty() || itemQuantity.isEmpty() || itemPrice.isEmpty()) {
                 Toast.makeText(context, "Please enter all the information", Toast.LENGTH_SHORT)
                     .show()

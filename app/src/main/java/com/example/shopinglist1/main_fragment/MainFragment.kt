@@ -27,7 +27,6 @@ class MainFragment : Fragment(), ShoppingAdapterMain.ShopppingItemClickInterface
     lateinit var shoppingAdapterMain: ShoppingAdapterMain
     lateinit var shoppingViewModelMain: ShoppingViewModelMain
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,8 +45,10 @@ class MainFragment : Fragment(), ShoppingAdapterMain.ShopppingItemClickInterface
         shoppingAdapterMain =  ShoppingAdapterMain(list, this)
         binding.IdRvItemMain.layoutManager = LinearLayoutManager(context)
         binding.IdRvItemMain.setHasFixedSize(true)
+        //Attaching the Adapter  to the view in main fragment
         binding.IdRvItemMain.adapter = shoppingAdapterMain
 
+        // Responsible for checking the changes if there are any render the view again
         shoppingViewModelMain.getAllShoppingItemsMain().observe(viewLifecycleOwner, Observer {
             shoppingAdapterMain.list = it
             shoppingAdapterMain.notifyDataSetChanged()

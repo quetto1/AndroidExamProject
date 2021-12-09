@@ -35,8 +35,7 @@ class ShoppingAdapter(var list:  List<ShoppingItems>, val shoppingItemClickInter
          return list
      }
 
-
-     //  Funkcja przypisuje do adaptera wartości które znajdują się na liście
+     // Responsible for bidning the elements to the data
      override fun onBindViewHolder(holder: ShoppingAdapter.ShoppingViewHolder, position: Int) {
          holder.nameTv.text = list.get(position).itemName
          holder.quantityTv.text = list.get(position).itemQuantity.toString()
@@ -45,12 +44,11 @@ class ShoppingAdapter(var list:  List<ShoppingItems>, val shoppingItemClickInter
          holder.amountTv.text = "$ " + itemTotal.toString()
          holder.deleteTv.setOnClickListener {
              // get(position) jest pobraniem pozycji danego elementu
-//             shopppingItemClickInterface.onItemClick(list.get(position))?
              vm.delete(list.get(position))
          }
      }
 
-     //funck
+
      override fun getItemCount(): Int {
          return list.size
      }
