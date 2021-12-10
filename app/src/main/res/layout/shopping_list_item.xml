@@ -45,7 +45,7 @@
             </TextView>
 
             <TextView
-                android:id="@+id/idTvRate"
+                android:id="@+id/idTvPrice"
                 android:layout_width="8dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"

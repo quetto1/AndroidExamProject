@@ -41,8 +41,9 @@ class ShoppingAdapterMain(var list:  List<ShoppingItemsMain>, val shopppingItemC
     // funtion responsible for
     override fun onBindViewHolder(holder: ShoppingAdapterMain.ShoppingViewHolderMain, position: Int) {
         holder.nameTv.text = list.get(position).itemNameMain
+
+        // function responsible for deleting an entire shopping list
         holder.deleteTv.setOnClickListener {
-            // function responsible for deleting an entire shopping list
             shopppingItemClickInterface.onItemClick(list.get(position))
         }
 

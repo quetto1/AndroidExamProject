@@ -10,13 +10,13 @@ import androidx.recyclerview.widget.RecyclerView
 class ShoppingAdapter(var list:  List<ShoppingItems>, val shoppingItemClickInterface: ShopppingItemClickInterface, private val vm:ShoppingViewModel): RecyclerView.Adapter<ShoppingAdapter.ShoppingViewHolder>()
  {
 
-    inner class ShoppingViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val nameTv = itemView.findViewById<TextView>(R.id.idTvItemName)
-        val quantityTv = itemView.findViewById<TextView>(R.id.idTvQuantity)
-        val rateTv = itemView.findViewById<TextView>(R.id.idTvRate)
-        val amountTv = itemView.findViewById<TextView>(R.id.idTvAmount)
-        val deleteTv = itemView.findViewById<ImageView>(R.id.idIvDelete)
-    }
+     inner class ShoppingViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+         val nameTv = itemView.findViewById<TextView>(R.id.idTvItemName)
+         val quantityTv = itemView.findViewById<TextView>(R.id.idTvQuantity)
+         val priceTv = itemView.findViewById<TextView>(R.id.idTvPrice)
+         val amountTv = itemView.findViewById<TextView>(R.id.idTvAmount)
+         val deleteTv = itemView.findViewById<ImageView>(R.id.idIvDelete)
+     }
 
     interface ShopppingItemClickInterface{
         fun onItemClick(shoppingItems: ShoppingItems)
@@ -35,15 +35,17 @@ class ShoppingAdapter(var list:  List<ShoppingItems>, val shoppingItemClickInter
          return list
      }
 
-     // Responsible for bidning the elements to the data
+     // Responsible for biding the elements to the data
      override fun onBindViewHolder(holder: ShoppingAdapter.ShoppingViewHolder, position: Int) {
          holder.nameTv.text = list.get(position).itemName
          holder.quantityTv.text = list.get(position).itemQuantity.toString()
-         holder.rateTv.text = list.get(position).itemPrice.toString()
+         holder.priceTv.text = list.get(position).itemPrice.toString()
+
+         // Counts the total price of the item(Price x Quantity)
          val itemTotal : Int = list.get(position).itemPrice*list.get(position).itemQuantity
          holder.amountTv.text = "$ " + itemTotal.toString()
          holder.deleteTv.setOnClickListener {
-             // get(position) jest pobraniem pozycji danego elementu
+             // get(position) takes the exact record from the db
              vm.delete(list.get(position))
          }
      }

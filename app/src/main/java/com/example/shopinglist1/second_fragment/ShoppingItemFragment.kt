@@ -58,7 +58,7 @@ class ShoppingItemFragment : Fragment(), ShoppingAdapter.ShopppingItemClickInter
         binding.IdRvItem.layoutManager = LinearLayoutManager(context)
         binding.IdRvItem.adapter = shoppingAdapter
 
-        // This is responsible for getting all the items and observing the status of the second recycle view if anything changes
+        //Getting all the items and observing the status of the second recycle view if anything changes
         shoppingViewModel.getAllPickedShoppingItems(position!!.toInt()).observe(viewLifecycleOwner, Observer {
             if(it == null || it.shoppingList.isEmpty()) {
                 it?.shoppingList = emptyList()
@@ -80,13 +80,13 @@ class ShoppingItemFragment : Fragment(), ShoppingAdapter.ShopppingItemClickInter
         binding.toolbar.deleteAll.setOnClickListener {
             shoppingViewModel.deleteByIdShoppingWithProducts(shoppingAdapter.getProducts().map { it.id })
         }
-        //binding responsible for going back to the main view
+        //function responsible for redirecting back to the main view once clicked on home icon
         binding.toolbar.idIvHome.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_shoppingItemFragment_to_mainFragment)
         }
     }
 
-    // Function responsible for delting the
+    // Function responsible for deleting certain record
     override fun onItemClick(shoppingItems: ShoppingItems) {
         shoppingViewModel.delete(shoppingItems)
         shoppingAdapter.notifyDataSetChanged()
